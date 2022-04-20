@@ -6,17 +6,28 @@ on:
     - main
 
 jobs:
-  call_build_test: 
+  call_build_test:
     uses: jgeun/swm-gha-workshop-advanced/.github/workflows/build-test.yaml@main
     with:
-      job_name: 'Build and Test for PR'
+      job_name: 'Build and Test for main'
       app_location: api
-      
-  call_deply_azure: 
+
+  call_deploy_azure_dev:
     uses: jgeun/swm-gha-workshop-advanced/.github/workflows/deploy-azure.yaml@main
     needs: call_build_test
     with:
       job_name: 'Deploy to Azure DEV'
+      environment: 'dev'
+    secrets:
+      azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+      resource_name: ${{ secrets.RESOURCE_NAME }}
+
+  call_deploy_azure_prod:
+    uses: jgeun/swm-gha-workshop-advanced/.github/workflows/deploy-azure.yaml@main
+    needs: call_deploy_azure_dev
+    with:
+      job_name: 'Deploy to Azure PROD'
+      environment: 'prod'
     secrets:
       azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
       resource_name: ${{ secrets.RESOURCE_NAME }}

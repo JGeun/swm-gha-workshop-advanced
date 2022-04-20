@@ -7,7 +7,7 @@ on:
 
 jobs:
   call_build_test:
-    uses: JGeun/swm-gha-workshop-advanced/.github/workflow/build-test.yaml@main
+    uses: jgeun/swm-gha-workshop-advanced/.github/workflows/build-test.yaml@main
     with:
       job_name: 'Build and Test for PR'
-      app_location: api
+      app-app_location: api

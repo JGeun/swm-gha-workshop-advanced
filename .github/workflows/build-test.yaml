@@ -1,6 +1,6 @@
-name: 'Build and Test Only'
+name: 'Build and Test'
 
-on: 
+on:
   workflow_call:
     inputs:
       job_name:
