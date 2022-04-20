@@ -7,13 +7,13 @@ on:
 
 jobs:
   call_build_test: 
-    uses: JGeun/swm-gha-workshop-advanced/.github/workflows/build-test.yaml@main
+    uses: jgeun/swm-gha-workshop-advanced/.github/workflows/build-test.yaml@main
     with:
       job_name: 'Build and Test for PR'
       app_location: api
       
   call_deply_azure: 
-    uses: JGeun/swm-gha-workshop-advanced/.github/workflows/deploy-azure.yaml@main
+    uses: jgeun/swm-gha-workshop-advanced/.github/workflows/deploy-azure.yaml@main
     needs: call_build_test
     with:
       job_name: 'Deploy to Azure DEV'
