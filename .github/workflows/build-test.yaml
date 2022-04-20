@@ -6,7 +6,7 @@ on:
       job_name:
         type: string
         required: true
-      api_location:
+      app_location:
         type: string
         required: true
 
